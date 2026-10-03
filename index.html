@@ -3,184 +3,451 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Fresh n Fine Supermarket - fresh groceries, fruits, vegetables, daily essentials and value offers.">
-  <title>Fresh n Fine | Supermarket</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="description" content="VVS Fresh n' Fine — supermarkets and wholesale stores for everyday groceries, household essentials, great value and customer rewards.">
+  <title>VVS Fresh n' Fine | Supermarket</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --green:#005b3c;
+      --green-dark:#003d2a;
+      --green-deep:#002f21;
+      --gold:#e6b93f;
+      --gold-light:#f8df83;
+      --cream:#fffaf0;
+      --paper:#f7f5ee;
+      --ink:#17251f;
+      --muted:#68736d;
+      --white:#fff;
+      --shadow:0 18px 50px rgba(0,49,34,.12);
+      --radius:24px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:"DM Sans",Arial,sans-serif;color:var(--ink);background:#fff;line-height:1.6}
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+    .container{width:min(1180px,92%);margin:auto}
+
+    /* Header */
+    .header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(14px);border-bottom:1px solid #e9eee9}
+    .nav-wrap{min-height:84px;display:flex;align-items:center;justify-content:space-between;gap:30px}
+    .brand img{width:180px;height:auto;object-fit:contain}
+    .nav{display:flex;align-items:center;gap:28px;font-weight:600;font-size:14px;color:#31443b}
+    .nav a{transition:.2s ease}
+    .nav a:hover,.nav .active{color:var(--green)}
+    .nav-button{background:var(--green);color:#fff!important;padding:12px 20px;border-radius:999px;box-shadow:0 8px 20px rgba(0,91,60,.18)}
+    .nav-button:hover{background:var(--green-dark)}
+    .menu-toggle{display:none;border:0;background:none;font-size:27px;color:var(--green);cursor:pointer}
+
+    /* Hero */
+    .hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#f4f9f3 0%,#fffdf5 52%,#f7e9b4 100%);min-height:650px;display:flex;align-items:center}
+    .hero:before{content:"";position:absolute;width:520px;height:520px;border-radius:50%;right:-180px;top:-230px;background:rgba(230,185,63,.18)}
+    .hero:after{content:"";position:absolute;width:360px;height:360px;border-radius:50%;left:-180px;bottom:-190px;background:rgba(0,91,60,.08)}
+    .hero-grid{display:grid;grid-template-columns:1.02fr .98fr;align-items:center;gap:55px;position:relative;z-index:2;padding:70px 0}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--green);font-size:13px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:18px}
+    .eyebrow:before{content:"";width:34px;height:3px;background:var(--gold);border-radius:99px}
+    .hero h1{font-family:"Playfair Display",serif;font-size:clamp(45px,5.2vw,76px);line-height:1.02;color:var(--green-dark);letter-spacing:-2.5px;max-width:650px}
+    .hero h1 span{color:#c58e12}
+    .hero p{font-size:18px;color:#53625b;max-width:590px;margin:25px 0 30px}
+    .hero-buttons{display:flex;gap:13px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 23px;border-radius:999px;font-weight:700;font-size:14px;transition:.2s ease}
+    .btn-primary{background:var(--green);color:#fff;box-shadow:0 12px 25px rgba(0,91,60,.2)}
+    .btn-primary:hover{transform:translateY(-2px);background:var(--green-dark)}
+    .btn-outline{border:1.5px solid var(--green);color:var(--green);background:#fff}
+    .btn-outline:hover{background:var(--green);color:#fff}
+    .hero-proof{display:flex;gap:24px;margin-top:31px;flex-wrap:wrap}
+    .proof{display:flex;align-items:center;gap:9px;font-size:13px;color:#59665f;font-weight:600}
+    .proof b{display:grid;place-items:center;width:25px;height:25px;border-radius:50%;background:#e8f4ed;color:var(--green);font-size:13px}
+
+    .hero-art{position:relative;min-height:460px}
+    .hero-photo{position:absolute;inset:20px 0 0 35px;border-radius:34px;overflow:hidden;box-shadow:var(--shadow);background:#ddd}
+    .hero-photo img{width:100%;height:100%;object-fit:cover}
+    .hero-photo:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,50,32,.02),rgba(0,49,34,.35))}
+    .hero-label{position:absolute;left:0;bottom:35px;z-index:3;background:#fff;border-radius:20px;padding:17px 21px;box-shadow:0 15px 35px rgba(0,0,0,.13);border-left:5px solid var(--gold)}
+    .hero-label small{display:block;text-transform:uppercase;letter-spacing:1.2px;font-size:10px;color:#738078;font-weight:800}
+    .hero-label strong{display:block;color:var(--green);font-size:18px;margin-top:2px}
+    .floating-tag{position:absolute;right:-8px;top:0;z-index:4;background:var(--green);color:#fff;padding:16px 19px;border-radius:18px;box-shadow:0 14px 35px rgba(0,63,42,.22);font-weight:800;font-size:13px}
+    .floating-tag span{display:block;color:var(--gold-light);font-size:11px;margin-top:2px;font-weight:500}
+
+    /* Intro stats */
+    .stats{margin-top:-38px;position:relative;z-index:8}
+    .stats-box{background:#fff;border-radius:26px;box-shadow:var(--shadow);display:grid;grid-template-columns:repeat(2,1fr);overflow:hidden;border:1px solid #edf0eb}
+    .stat{padding:30px 34px;display:flex;align-items:center;gap:20px;position:relative}
+    .stat:first-child{background:linear-gradient(135deg,#004e35,#00704a);color:#fff}
+    .stat:first-child .stat-label{color:#dcefe5}
+    .stat:nth-child(2){background:linear-gradient(135deg,#fff9e8,#fff)}
+    .stat-number{font-family:"Playfair Display",serif;font-size:48px;line-height:1;color:var(--gold)}
+    .stat:nth-child(2) .stat-number{color:var(--green)}
+    .stat-label{font-size:15px;font-weight:700;color:#52635a}
+    .stat-label small{display:block;font-size:12px;font-weight:500;color:#849087;margin-top:2px}
+    .stat:first-child .stat-label small{color:#b7d8c9}
+
+    /* Sections */
+    .section{padding:92px 0}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:25px;margin-bottom:38px}
+    .section-kicker{display:block;color:#a5760c;font-size:12px;font-weight:800;letter-spacing:1.7px;text-transform:uppercase;margin-bottom:8px}
+    h2{font-family:"Playfair Display",serif;color:var(--green-dark);font-size:clamp(31px,4vw,48px);line-height:1.1;letter-spacing:-1px}
+    .section-head p{max-width:500px;color:var(--muted);margin-top:10px}
+    .text-link{color:var(--green);font-size:14px;font-weight:800;white-space:nowrap}
+
+    /* Categories */
+    .category-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .category{position:relative;min-height:245px;border-radius:24px;padding:28px;overflow:hidden;transition:.25s ease;border:1px solid #e7ece7;background:#f5f8f4}
+    .category:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+    .category:nth-child(2){background:#fff9e9}
+    .category:nth-child(3){background:#f5f2eb}
+    .category:nth-child(4){background:#edf5f1}
+    .category .num{font-size:12px;font-weight:800;color:#8b968f;letter-spacing:1px}
+    .category h3{font-family:"Playfair Display",serif;font-size:25px;color:var(--green-dark);margin:28px 0 8px}
+    .category p{font-size:13px;color:#65716b;max-width:190px}
+    .category-icon{position:absolute;right:18px;bottom:12px;font-size:86px;opacity:.16;filter:saturate(.7)}
+    .category .arrow{position:absolute;right:24px;top:25px;color:var(--green);font-size:19px}
+
+    /* Promise */
+    .promise{background:var(--green-deep);color:#fff;position:relative;overflow:hidden}
+    .promise:after{content:"";position:absolute;right:-100px;top:-180px;width:500px;height:500px;border:70px solid rgba(230,185,63,.12);border-radius:50%}
+    .promise-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;align-items:center;position:relative;z-index:1}
+    .promise h2{color:#fff}
+    .promise-intro{color:#c8d8d1;margin-top:18px;max-width:470px}
+    .promise-list{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    .promise-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:25px}
+    .promise-card .icon{width:42px;height:42px;display:grid;place-items:center;background:rgba(230,185,63,.16);color:var(--gold-light);border-radius:13px;font-size:20px;margin-bottom:17px}
+    .promise-card h3{font-size:16px;margin-bottom:6px}
+    .promise-card p{font-size:13px;color:#b9cdc3}
+
+    /* Network */
+    .network{background:var(--paper)}
+    .network-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+    .network-card{border-radius:26px;padding:36px;min-height:300px;position:relative;overflow:hidden}
+    .network-card.wholesale{background:linear-gradient(145deg,#004c34,#006d49);color:#fff}
+    .network-card.supermarkets{background:linear-gradient(145deg,#fffdf5,#f3e6ad);color:var(--green-dark)}
+    .network-card .big-number{font-family:"Playfair Display",serif;font-size:88px;line-height:.9;color:var(--gold-light);font-weight:700}
+    .supermarkets .big-number{color:#c89519}
+    .network-card h3{font-family:"Playfair Display",serif;font-size:30px;margin:15px 0 8px}
+    .network-card p{font-size:14px;max-width:390px;opacity:.82}
+    .network-card .mini-label{position:absolute;right:28px;top:28px;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.12);font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase}
+    .supermarkets .mini-label{background:rgba(0,91,60,.08);color:var(--green)}
+    .network-dots{position:absolute;right:28px;bottom:25px;display:grid;grid-template-columns:repeat(3,12px);gap:9px}
+    .network-dots i{width:12px;height:12px;background:rgba(255,255,255,.42);border-radius:50%}
+    .supermarkets .network-dots i{background:#d2ad42}
+
+    /* Offers / shopping */
+    .shop-banner{padding:0 0 92px}
+    .shop-banner-inner{border-radius:30px;overflow:hidden;min-height:300px;position:relative;background:linear-gradient(100deg,#f0f6ef,#fff7db);display:flex;align-items:center;padding:48px}
+    .shop-banner-inner:after{content:"";position:absolute;right:-70px;bottom:-160px;width:460px;height:460px;border-radius:50%;border:80px solid rgba(0,91,60,.08)}
+    .shop-copy{max-width:650px;position:relative;z-index:2}
+    .shop-copy p{color:#68756d;margin:15px 0 23px;max-width:560px}
+    .feature-pills{display:flex;gap:9px;flex-wrap:wrap}
+    .feature-pill{background:#fff;border:1px solid #e7eadf;padding:8px 12px;border-radius:999px;font-size:12px;font-weight:700;color:#536159}
+
+    /* Super 12 */
+    .super12{padding:95px 0;background:#fff}
+    .super12-head{display:grid;grid-template-columns:1fr .85fr;gap:40px;align-items:end;margin-bottom:30px}
+    .super12-head p{color:var(--muted);font-size:15px;max-width:560px}
+    .super12-image{border-radius:28px;overflow:hidden;box-shadow:0 20px 60px rgba(0,50,32,.16);border:1px solid #e5d39b;background:#f7f2e4}
+    .super12-image img{width:100%;height:auto}
+    .super12-copy{margin-top:26px;display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center}
+    .super12-copy p{color:#5f6b64;max-width:850px;font-size:15px}
+    .gold-btn{background:linear-gradient(135deg,#e2b53d,#f2d474);color:#2b2b18;box-shadow:0 10px 25px rgba(190,145,32,.22);white-space:nowrap}
+    .gold-btn:hover{transform:translateY(-2px)}
+
+    /* Contact CTA */
+    .cta{background:linear-gradient(135deg,var(--green),#00845a);color:#fff;padding:72px 0;position:relative;overflow:hidden}
+    .cta:after{content:"";position:absolute;right:-110px;top:-190px;width:500px;height:500px;border:70px solid rgba(230,185,63,.12);border-radius:50%}
+    .cta-inner{display:flex;align-items:center;justify-content:space-between;gap:35px;position:relative;z-index:2}
+    .cta h2{color:#fff;max-width:700px}
+    .cta p{color:#cfe1d9;margin-top:10px}
+    .contact-actions{display:flex;gap:10px;flex-wrap:wrap}
+    .contact-btn{background:#fff;color:var(--green);font-weight:800;padding:13px 18px;border-radius:999px;font-size:13px}
+    .contact-btn.gold{background:var(--gold-light);color:#31402f}
+
+    /* Footer */
+    footer{background:#00271b;color:#c5d3cd;padding:55px 0 0}
+    .footer-grid{display:grid;grid-template-columns:1.3fr .7fr 1fr;gap:50px;padding-bottom:45px}
+    .footer-logo{width:170px;background:#fff;padding:8px;border-radius:12px;margin-bottom:14px}
+    .footer-grid p{font-size:13px;max-width:340px}
+    footer h4{color:#fff;margin-bottom:14px;font-size:14px}
+    .footer-links{display:flex;flex-direction:column;gap:8px;font-size:13px}
+    .footer-contact{display:flex;flex-direction:column;gap:9px;font-size:13px}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding:18px 0;font-size:12px;color:#91a79e}
+    .footer-bottom .container{display:flex;justify-content:space-between;gap:15px}
+
+    @media(max-width:900px){
+      .nav{gap:15px}
+      .hero-grid,.promise-grid,.super12-head{grid-template-columns:1fr}
+      .hero{min-height:auto}
+      .hero-art{min-height:420px;max-width:620px;width:100%;margin:auto}
+      .category-grid{grid-template-columns:repeat(2,1fr)}
+      .network-grid{grid-template-columns:1fr}
+      .super12-copy{grid-template-columns:1fr}
+    }
+    @media(max-width:700px){
+      .nav{display:none;position:absolute;top:84px;left:0;right:0;background:#fff;padding:18px 5%;border-bottom:1px solid #e8eee9;box-shadow:0 15px 30px rgba(0,0,0,.08);flex-direction:column;align-items:stretch}
+      .nav.open{display:flex}
+      .nav-button{text-align:center}
+      .menu-toggle{display:block}
+      .brand img{width:155px}
+      .hero-grid{padding:55px 0 65px}
+      .hero h1{font-size:44px}
+      .hero p{font-size:16px}
+      .hero-art{min-height:330px}
+      .hero-photo{inset:15px 0 0 15px}
+      .floating-tag{right:0}
+      .stats{margin-top:0;padding-top:15px}
+      .stats-box{grid-template-columns:1fr}
+      .stat{padding:25px}
+      .section{padding:70px 0}
+      .section-head{align-items:start;flex-direction:column}
+      .category-grid{grid-template-columns:1fr}
+      .promise-list{grid-template-columns:1fr}
+      .network-card{min-height:260px;padding:28px}
+      .shop-banner-inner{padding:32px 25px}
+      .cta-inner{align-items:flex-start;flex-direction:column}
+      .footer-grid{grid-template-columns:1fr;gap:30px}
+      .footer-bottom .container{flex-direction:column}
+    }
+  </style>
 </head>
 <body>
-  <div class="topbar">
-    <div class="container topbar-inner">
-      <span>Fresh groceries • Daily essentials • Great value</span>
-      <span>Kerala, India</span>
-    </div>
-  </div>
 
-  <header class="header">
-    <div class="container nav-wrap">
-      <a class="brand" href="index.html">
-        <img src="assets/fresh-n-fine-logo.jpg" alt="Fresh n Fine Supermarket logo">
-      </a>
-      <button class="menu-toggle" aria-label="Open navigation">☰</button>
-      <nav class="nav">
-        <a class="active" href="index.html">Home</a>
+<header class="header">
+  <div class="container nav-wrap">
+    <a class="brand" href="index.html" aria-label="Fresh n' Fine home">
+      <img src="assets/fresh-n-fine-logo.jpg" alt="VVS Fresh n' Fine logo">
+    </a>
+    <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+    <nav class="nav" aria-label="Main navigation">
+      <a class="active" href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="offers.html">Offers</a>
+      <a href="branches.html">Branches</a>
+      <a href="#super12">Super 12 Club</a>
+      <a href="about.html">About</a>
+      <a class="nav-button" href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">Your everyday supermarket</span>
+        <h1>Everyday shopping, made <span>better.</span></h1>
+        <p>Quality groceries, daily essentials, household needs and great value — thoughtfully selected for the way your family shops every day.</p>
+        <div class="hero-buttons">
+          <a class="btn btn-primary" href="products.html">Explore Products</a>
+          <a class="btn btn-outline" href="offers.html">View Offers</a>
+        </div>
+        <div class="hero-proof">
+          <span class="proof"><b>✓</b> Quality selection</span>
+          <span class="proof"><b>✓</b> Everyday value</span>
+          <span class="proof"><b>✓</b> Convenient shopping</span>
+        </div>
+      </div>
+      <div class="hero-art">
+        <div class="hero-photo">
+          <img src="https://images.unsplash.com/photo-1579113800032-c38bd7635818?auto=format&fit=crop&w=1200&q=85" alt="Colourful supermarket produce and groceries">
+        </div>
+        <div class="floating-tag">FRESH N' FINE<span>Trusted everyday shopping</span></div>
+        <div class="hero-label"><small>VVS Fresh n' Fine</small><strong>Shop. Save. Enjoy.</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats" aria-label="VVS Fresh n' Fine network">
+    <div class="container">
+      <div class="stats-box">
+        <div class="stat">
+          <div class="stat-number">03</div>
+          <div class="stat-label">Wholesale locations<small>Serving business & bulk requirements</small></div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">09</div>
+          <div class="stat-label">Supermarkets<small>Convenient retail shopping locations</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="section-kicker">SHOP WITH EASE</span>
+          <h2>What you need, all in one place.</h2>
+          <p>A practical selection for the everyday basket — from kitchen staples to household requirements and value-led offers.</p>
+        </div>
+        <a class="text-link" href="products.html">View all products →</a>
+      </div>
+
+      <div class="category-grid">
+        <a class="category" href="products.html#groceries">
+          <span class="num">01 / DAILY</span><span class="arrow">↗</span>
+          <h3>Groceries</h3><p>Rice, oils, spices, staples and everything your kitchen uses regularly.</p>
+          <div class="category-icon">🛒</div>
+        </a>
+        <a class="category" href="products.html#essentials">
+          <span class="num">02 / HOME</span><span class="arrow">↗</span>
+          <h3>Daily Essentials</h3><p>Personal care, home-use products and practical everyday requirements.</p>
+          <div class="category-icon">🧺</div>
+        </a>
+        <a class="category" href="products.html#homecare">
+          <span class="num">03 / CARE</span><span class="arrow">↗</span>
+          <h3>Home Care</h3><p>Cleaning products and household solutions for a well-kept home.</p>
+          <div class="category-icon">✨</div>
+        </a>
+        <a class="category" href="offers.html">
+          <span class="num">04 / VALUE</span><span class="arrow">↗</span>
+          <h3>Offers & Savings</h3><p>Seasonal campaigns, special deals and value opportunities throughout the year.</p>
+          <div class="category-icon">🏷️</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="promise section">
+    <div class="container promise-grid">
+      <div>
+        <span class="section-kicker" style="color:#e6c75f">THE FRESH N' FINE WAY</span>
+        <h2>A supermarket built around everyday life.</h2>
+        <p class="promise-intro">We bring together the products, value and convenience customers look for in their regular shopping — with a simple, dependable supermarket experience.</p>
+      </div>
+      <div class="promise-list">
+        <div class="promise-card"><div class="icon">✓</div><h3>Quality selection</h3><p>Products chosen for regular household and family shopping.</p></div>
+        <div class="promise-card"><div class="icon">₹</div><h3>Value focused</h3><p>Everyday value supported by offers and customer rewards.</p></div>
+        <div class="promise-card"><div class="icon">⌂</div><h3>Convenient locations</h3><p>Retail and wholesale locations designed around customer needs.</p></div>
+        <div class="promise-card"><div class="icon">★</div><h3>Customer first</h3><p>A shopping experience that aims to make every visit worthwhile.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section network">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="section-kicker">OUR NETWORK</span>
+          <h2>One group. Two ways to shop.</h2>
+          <p>From everyday retail shopping to wholesale requirements, VVS Fresh n' Fine serves customers through a growing network.</p>
+        </div>
+      </div>
+      <div class="network-grid">
+        <a href="branches.html" class="network-card wholesale">
+          <span class="mini-label">Wholesale</span>
+          <div class="big-number">03</div>
+          <h3>Wholesale</h3>
+          <p>Bulk purchasing and business-oriented supply through dedicated wholesale locations.</p>
+          <div class="network-dots"><i></i><i></i><i></i></div>
+        </a>
+        <a href="branches.html" class="network-card supermarkets">
+          <span class="mini-label">Retail</span>
+          <div class="big-number">09</div>
+          <h3>Supermarkets</h3>
+          <p>Convenient stores for families and customers shopping for everyday needs.</p>
+          <div class="network-dots"><i></i><i></i><i></i></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="shop-banner">
+    <div class="container">
+      <div class="shop-banner-inner">
+        <div class="shop-copy">
+          <span class="section-kicker">VALUE THROUGHOUT THE YEAR</span>
+          <h2>More reasons to make Fresh n' Fine part of your routine.</h2>
+          <p>Discover product selections, current offers and customer-focused programmes designed to add more value to your regular shopping.</p>
+          <div class="feature-pills">
+            <span class="feature-pill">Everyday essentials</span>
+            <span class="feature-pill">Special offers</span>
+            <span class="feature-pill">Customer rewards</span>
+            <span class="feature-pill">Wholesale support</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="super12" id="super12">
+    <div class="container">
+      <div class="super12-head">
+        <div>
+          <span class="section-kicker">EXCLUSIVE CUSTOMER PROGRAMME</span>
+          <h2>Super 12 Club</h2>
+        </div>
+        <p>A special loyalty programme exclusively for our valued customers — designed to make regular shopping more rewarding.</p>
+      </div>
+
+      <div class="super12-image">
+        <img src="assets/super12-club.png" alt="VVS Fresh n' Fine Super 12 Club membership cards — Plus, Prime, Gold, Emerald and Platinum">
+      </div>
+
+      <div class="super12-copy">
+        <p><strong>Super 12 Club</strong> is VVS Fresh n Fine’s exclusive customer loyalty programme. Customers can progress through different membership levels based on their purchase value and enjoy special benefits and rewards. The programme is designed to make every purchase more rewarding while building a stronger, long-term relationship with our customers.</p>
+        <a class="btn gold-btn" href="contact.html">Know More About Super 12</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container cta-inner">
+      <div>
+        <span class="section-kicker" style="color:#f3d66c">LET'S CONNECT</span>
+        <h2>Need help with a store, product or customer service?</h2>
+        <p>Reach VVS Fresh n' Fine directly through WhatsApp, phone or email.</p>
+      </div>
+      <div class="contact-actions">
+        <a class="contact-btn gold" href="https://wa.me/917994495601" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="contact-btn" href="tel:18001231503">Call 1800 123 1503</a>
+        <a class="contact-btn" href="mailto:ceo.vvsgroup@gmail.com">Email Us</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-grid">
+    <div>
+      <img src="assets/fresh-n-fine-logo.jpg" class="footer-logo" alt="VVS Fresh n' Fine logo">
+      <p>VVS Fresh n' Fine — everyday groceries, household essentials, value and customer rewards through our retail and wholesale network.</p>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <div class="footer-links">
         <a href="products.html">Products</a>
         <a href="offers.html">Offers</a>
         <a href="branches.html">Branches</a>
-        <a href="privilege.html">Privilege</a>
+        <a href="#super12">Super 12 Club</a>
         <a href="about.html">About</a>
-        <a class="nav-button" href="contact.html">Contact</a>
-      </nav>
+      </div>
     </div>
-  </header>
-
-  <main>
-    <section class="hero">
-      <div class="hero-shape hero-shape-one"></div>
-      <div class="hero-shape hero-shape-two"></div>
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <span class="pill">FRESH N' FINE SUPERMARKET</span>
-          <h1>Freshness you can <span>see.</span><br>Value you can <span>feel.</span></h1>
-          <p>Fresh vegetables and fruits, everyday groceries, household essentials and regular savings — designed around everyday family shopping.</p>
-          <div class="hero-buttons">
-            <a class="btn btn-primary" href="products.html">Explore Products</a>
-            <a class="btn btn-secondary" href="offers.html">Today's Offers</a>
-          </div>
-          <div class="hero-trust">
-            <span>✓ Fresh produce</span>
-            <span>✓ Everyday essentials</span>
-            <span>✓ Convenient branches</span>
-          </div>
-        </div>
-        <div class="hero-visual">
-          <div class="fresh-badge">FRESH<br><strong>EVERY DAY</strong></div>
-          <div class="produce-orbit orbit-a">🥦</div>
-          <div class="produce-orbit orbit-b">🍎</div>
-          <div class="produce-orbit orbit-c">🥕</div>
-          <div class="produce-orbit orbit-d">🍊</div>
-          <div class="basket">
-            <div class="basket-label">FRESH N' FINE</div>
-            <div class="basket-items">🥬 🍅 🍌 🥕 🍊 🥔</div>
-          </div>
-        </div>
+    <div>
+      <h4>Contact VVS Fresh n' Fine</h4>
+      <div class="footer-contact">
+        <a href="tel:18001231503">☎ 1800 123 1503</a>
+        <a href="https://wa.me/917994495601" target="_blank" rel="noopener">◉ WhatsApp: 79944 95601</a>
+        <a href="mailto:ceo.vvsgroup@gmail.com">✉ ceo.vvsgroup@gmail.com</a>
+        <span>Kerala, India</span>
       </div>
-    </section>
-
-    <section class="quick-links">
-      <div class="container quick-grid">
-        <a href="products.html#vegetables"><span>🥬</span><div><b>Fresh Vegetables</b><small>Daily essentials</small></div></a>
-        <a href="products.html#fruits"><span>🍎</span><div><b>Fresh Fruits</b><small>Seasonal selection</small></div></a>
-        <a href="products.html#groceries"><span>🛒</span><div><b>Groceries</b><small>Kitchen staples</small></div></a>
-        <a href="offers.html"><span>🏷️</span><div><b>Special Offers</b><small>Save more</small></div></a>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="heading-row">
-          <div><span class="section-kicker">SHOP SMART</span><h2>Everything your family needs</h2></div>
-          <a class="text-link" href="products.html">View all products →</a>
-        </div>
-        <div class="category-grid">
-          <a class="category-card category-green" href="products.html#vegetables">
-            <div class="category-icon">🥬</div><span>01</span><h3>Vegetables</h3><p>Fresh everyday produce.</p>
-          </a>
-          <a class="category-card category-yellow" href="products.html#fruits">
-            <div class="category-icon">🍊</div><span>02</span><h3>Fruits</h3><p>Seasonal and everyday favourites.</p>
-          </a>
-          <a class="category-card category-cream" href="products.html#groceries">
-            <div class="category-icon">🍚</div><span>03</span><h3>Groceries</h3><p>Rice, oils, spices and staples.</p>
-          </a>
-          <a class="category-card category-dark" href="products.html#homecare">
-            <div class="category-icon">🧹</div><span>04</span><h3>Home Care</h3><p>Cleaning and household needs.</p>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="offer-banner">
-      <div class="container offer-banner-inner">
-        <div>
-          <span class="section-kicker light">WEEKLY VALUE</span>
-          <h2>Buy smart. Save on the basket.</h2>
-          <p>Highlight your current supermarket promotions, festival offers and special bundle deals here.</p>
-        </div>
-        <a class="btn btn-yellow" href="offers.html">See Current Offers</a>
-      </div>
-    </section>
-
-    <section class="section produce-section">
-      <div class="container produce-grid">
-        <div class="produce-photo">
-          <div class="photo-overlay">
-            <span class="section-kicker light">FRESH PRODUCE</span>
-            <h2>Organic-style produce experience</h2>
-            <p>Inspired by the brand presentation in your identity deck: a strong fresh-fruits-and-vegetables visual language.</p>
-          </div>
-        </div>
-        <div class="produce-copy">
-          <span class="section-kicker">FRESHNESS FIRST</span>
-          <h2>A website that feels like the store.</h2>
-          <p>The brand deck uses a distinctive green-and-golden-yellow palette, strong product-led visuals, and a clean supermarket identity. This redesign carries those elements into the digital experience. fileciteturn0file0L8-L16</p>
-          <div class="check-list">
-            <div>✓ Green + golden-yellow brand system</div>
-            <div>✓ Strong “Supermarket” identity</div>
-            <div>✓ Fresh produce as a major visual category</div>
-            <div>✓ Promotional areas for discounts and campaigns</div>
-          </div>
-          <a class="btn btn-primary" href="about.html">Learn About Fresh n Fine</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="privilege-preview">
-      <div class="container privilege-box">
-        <div class="privilege-card-art">
-          <div class="pc-logo">VVS</div>
-          <div class="pc-title">Fresh n' Fine</div>
-          <div class="pc-sub">SUPERMARKET</div>
-          <div class="pc-name">SAMRIDHI</div>
-          <small>PRIVILEGE CARD</small>
-        </div>
-        <div>
-          <span class="section-kicker">PRIVILEGE PROGRAM</span>
-          <h2>Make regular shopping more rewarding.</h2>
-          <p>Your branding document proposes a privilege-card concept and names such as Samridhi, Sreshtam, Akshaya, Mahima and Nanma. fileciteturn0file0L11-L19</p>
-          <a class="btn btn-yellow" href="privilege.html">Explore Privilege Card</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section branch-preview">
-      <div class="container">
-        <div class="heading-row">
-          <div><span class="section-kicker">FIND YOUR STORE</span><h2>Visit a Fresh n Fine branch</h2></div>
-          <a class="text-link" href="branches.html">All branches →</a>
-        </div>
-        <div class="branch-mini-grid">
-          <a href="branches.html"><strong>01</strong><span>Main Store</span><small>Your location</small></a>
-          <a href="branches.html"><strong>02</strong><span>Branch 02</span><small>Your location</small></a>
-          <a href="branches.html"><strong>03</strong><span>Branch 03</span><small>Your location</small></a>
-        </div>
-      </div>
-    </section>
-
-    <section class="cta">
-      <div class="container cta-inner">
-        <div><span class="section-kicker light">LET'S CONNECT</span><h2>Offers, branches or customer support?</h2><p>Connect the site to your WhatsApp, phone, Google Maps and enquiry system.</p></div>
-        <a class="btn btn-light" href="contact.html">Contact Us</a>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container footer-grid">
-      <div><img src="assets/fresh-n-fine-logo.jpg" class="footer-logo" alt="Fresh n Fine logo"><p>Fresh groceries, vegetables, fruits and everyday essentials.</p></div>
-      <div><h4>Quick Links</h4><a href="products.html">Products</a><a href="offers.html">Offers</a><a href="branches.html">Branches</a><a href="privilege.html">Privilege</a></div>
-      <div><h4>Contact</h4><p>Phone: +91 00000 00000</p><p>WhatsApp: +91 00000 00000</p><p>Kerala, India</p></div>
     </div>
-    <div class="footer-bottom"><div class="container">© <span id="year"></span> Fresh n Fine Supermarket</div></div>
-  </footer>
-  <script src="script.js"></script>
+  </div>
+  <div class="footer-bottom">
+    <div class="container"><span>© <span id="year"></span> VVS Fresh n' Fine. All rights reserved.</span><span>Freshness • Value • Rewards</span></div>
+  </div>
+</footer>
+
+<script>
+  const menuToggle = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('.nav');
+  menuToggle?.addEventListener('click', () => {
+    nav.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', nav.classList.contains('open'));
+  });
+  document.querySelectorAll('.nav a').forEach(link => link.addEventListener('click', () => nav.classList.remove('open')));
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
