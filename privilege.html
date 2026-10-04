@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Fresh n Fine Super 12 Club loyalty scheme.">
 <title>Fresh n Fine | Super 12 Club</title>
+<link rel="stylesheet" href="style.css">
 <style>
 :root{
  --green:#087a40;--deep:#034e2d;--gold:#d2a23c;--ink:#16372a;
@@ -12,8 +13,7 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:#fff}
-.container{width:min(1180px,92%);margin:auto}
+.super12-page .container{width:min(1180px,92%);margin:auto}
 .hero{position:relative;overflow:hidden;background:
  radial-gradient(circle at 82% 15%,rgba(210,162,60,.24),transparent 28%),
  radial-gradient(circle at 10% 80%,rgba(30,145,79,.16),transparent 32%),
@@ -89,7 +89,6 @@ td{font-weight:700}
 .final{padding:70px 0;background:linear-gradient(135deg,#034f2c,#0a8c49);color:white;text-align:center}
 .final h2{color:white;margin:0 0 10px} .final p{max-width:650px;margin:0 auto 25px;line-height:1.6;opacity:.9}
 .final .primary{background:#fff;color:var(--deep)}
-footer{padding:23px;text-align:center;color:#74827c;font-size:12px;background:#f7faf8}
 
 @media(max-width:980px){
  .hero-grid{grid-template-columns:1fr} .deck-area{min-height:500px}
@@ -111,9 +110,10 @@ footer{padding:23px;text-align:center;color:#74827c;font-size:12px;background:#f
 </style>
 </head>
 <body>
-<header class="header"><div class="container nav-wrap"><a class="brand" href="index.html"><img src="assets/fresh-n-fine-logo.jpg" alt="Fresh n Fine"></a><button class="menu-toggle" aria-label="Open navigation">☰</button><nav class="nav"><a href="index.html">Home</a><a href="products.html">Products</a><a href="offers.html">Offers</a><a href="branches.html">Branches</a><a class="active" href="super12-club.html">Privilege</a><a href="about.html">About</a><a class="nav-button" href="contact.html">Contact</a></nav></div></header>
+<header class="header"><div class="container nav-wrap"><a class="brand" href="index.html"><img src="assets/fresh-n-fine-logo.jpg" alt="Fresh n Fine"></a><button class="menu-toggle" aria-label="Open navigation">☰</button><nav class="nav"><a href="index.html">Home</a><a href="products.html">Products</a><a href="offers.html">Offers</a><a href="branches.html">Branches</a><a class="active" href="privilege.html">Privilege</a><a href="about.html">About</a><a class="nav-button" href="contact.html">Contact</a></nav></div></header>
 
 
+<main class="super12-page">
 <section class="hero">
  <div class="container hero-grid">
   <div>
@@ -242,6 +242,7 @@ footer{padding:23px;text-align:center;color:#74827c;font-size:12px;background:#f
 <section class="final">
  <div class="container"><h2>Be Part of Super 12 Club</h2><p>Shop more. Stay loyal. Get rewarded.</p><a class="btn primary" href="#cards">Explore Super 12 Club</a></div>
 </section>
+<script src="script.js"></script>
 <script>
 const cards = [...document.querySelectorAll('.deck-card')];
 const dots = [...document.querySelectorAll('.dot')];
@@ -272,6 +273,7 @@ function restart() {clearInterval(timer); timer=setInterval(next,4200);}
 render(); restart();
 </script>
 
+</main>
 <footer class="footer"><div class="container footer-grid"><div><img src="assets/fresh-n-fine-logo.jpg" class="footer-logo" alt="Fresh n Fine"><p>Everyday value with a stronger customer relationship.</p></div><div><h4>Quick Links</h4><a href="products.html">Products</a><a href="offers.html">Offers</a><a href="branches.html">Branches</a></div><div><h4>Contact</h4><p>+91 00000 00000</p><p>Kerala, India</p></div></div><div class="footer-bottom"><div class="container">© <span id="year"></span> Fresh n Fine Supermarket</div></div></footer>
 </body>
 </html>
