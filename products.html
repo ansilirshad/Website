@@ -23,6 +23,7 @@
 .subcategory-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
 .subcategory-card{display:block;background:#fff;border:1px solid #e5e8e2;border-radius:17px;padding:12px;text-decoration:none;color:inherit;transition:.2s;min-width:0}
 .subcategory-card:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(22,49,30,.10);border-color:#c9ddc8}
+.subcategory-card.subcategory-focus{border-color:#17753b;box-shadow:0 0 0 3px rgba(23,117,59,.16),0 12px 28px rgba(22,49,30,.12)}
 .subcategory-image{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:13px;background:#eef2ea;display:block}
 .subcategory-name{font-weight:750;font-size:14px;line-height:1.25;margin:11px 2px 3px}
 .subcategory-hint{font-size:12px;color:#7a817b;margin:0 2px}
@@ -166,8 +167,25 @@
   });
 
   const hash = decodeURIComponent(location.hash.replace("#", ""));
-  const initialIndex = Math.max(0, categories.findIndex(c => c.slug === hash));
+  let initialIndex = categories.findIndex(c => c.slug === hash);
+  let requestedSubcategory = null;
+  if (initialIndex < 0) {
+    initialIndex = categories.findIndex(c => c.subcategories.some(item => item.slug === hash));
+    if (initialIndex >= 0) requestedSubcategory = hash;
+  }
+  if (initialIndex < 0) initialIndex = 0;
   render(initialIndex);
+
+  if (requestedSubcategory) {
+    requestAnimationFrame(() => {
+      const card = document.querySelector(`[href="#${CSS.escape(requestedSubcategory)}"]`);
+      if (card) {
+        card.scrollIntoView({behavior:"smooth", block:"center"});
+        card.classList.add("subcategory-focus");
+        setTimeout(() => card.classList.remove("subcategory-focus"), 1800);
+      }
+    });
+  }
 
   const year = document.getElementById("year");
   if (year) year.textContent = new Date().getFullYear();
